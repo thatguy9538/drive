@@ -1,4 +1,4 @@
 FROM perl:5.38-slim
 WORKDIR /app
-COPY drive-server.pl "Sodium Slide.html" ./
+COPY . .
 CMD ["perl", "drive-server.pl"]
