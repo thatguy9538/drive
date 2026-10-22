@@ -2123,7 +2123,7 @@ function lanConnect(addr) {
   if (!addr) { NET.state = 'off'; renderLan(); return; }
   NET.state = 'connecting'; renderLan();
   let ws;
-  try { ws = new WebSocket(`${location.protocol === 'https:' ? 'wss' : 'ws'}://${addr}/ws`); } catch (_) { NET.state = 'error'; renderLan(); return; }
+  try { ws = new WebSocket(`ws://${addr}/ws`); } catch (_) { NET.state = 'error'; renderLan(); return; }
   NET.ws = ws;
   ws.onopen = () => ws.send(JSON.stringify({ t: 'hello', n: NET.name }));
   ws.onmessage = e => { let m; try { m = JSON.parse(e.data); } catch (_) { return; } lanMsg(m); };
